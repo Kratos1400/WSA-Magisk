@@ -1,7 +1,7 @@
 name: Build WSA Magisk
 on:
   schedule:
-    - cron: "30 2 1 * *"
+    - cron: "0 13 * * *"
   push:
     branches: [main]
   workflow_dispatch:
@@ -16,9 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        arch: [x64, arm64]
-        root: [magisk, none]
-        release: [retail, RP]
+        arch: [x64]
+        root: [magisk]
+        release: [WIF]
         
     steps:         
       - name: Checkout
@@ -35,7 +35,7 @@ jobs:
         run: chmod +x ./scripts/build.sh
        
       - name: Build WSA GAPPS ${{ matrix.root }} ${{ matrix.arch }}
-        run:  ./scripts/build.sh --arch ${{ matrix.arch }} --release-type ${{ matrix.release }} --magisk-ver stable --remove-amazon --root-sol ${{ matrix.root }} --compress
+        run:  ./scripts/build.sh --arch ${{ matrix.arch }} --release-type ${{ matrix.release }} --magisk-ver delta --remove-amazon --root-sol ${{ matrix.root }} --compress
     
       - name: Prepare release tag
         id: date

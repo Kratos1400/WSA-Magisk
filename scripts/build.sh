@@ -94,9 +94,9 @@ function Gen_Rand_Str {
 
 default() {
     ARCH=x64
-    RELEASE_TYPE=retail
-    MAGISK_VER=stable
-    GAPPS_BRAND=MindTheGapps
+    RELEASE_TYPE=Insider Fast
+    MAGISK_VER=delta
+    GAPPS_BRAND=OpenGApps
     GAPPS_VARIANT=pico
     ROOT_SOL=magisk
 }
@@ -120,10 +120,7 @@ RELEASE_TYPE_MAP=(
 )
 
 MAGISK_VER_MAP=(
-    "stable"
-    "beta"
-    "canary"
-    "debug"
+    "delta"
 )
 
 GAPPS_BRAND_MAP=(
@@ -697,7 +694,7 @@ function Get-InstalledDependencyVersion {
 
 function Finish {
     Clear-Host
-    Start-Process "wsa://com.topjohnwu.magisk"
+    Start-Process "wsa://io.github.huskydg.magisk"
     Start-Process "wsa://com.android.vending"
 }
 
